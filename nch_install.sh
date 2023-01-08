@@ -1,5 +1,5 @@
 echo '--NCH ARCH INSTALLER'
-echo 'PR TEST HEHE'
+echo 'ALSO GIT FIRST TEST'
 echo '----NOT FOR DUAL-BOOTING!!'; sleep 2
 
 echo 'Verifying boot mode (W. 1.6)'; sleep 1 &&
