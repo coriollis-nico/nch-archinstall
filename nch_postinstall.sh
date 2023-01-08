@@ -20,6 +20,24 @@ passwd &&
 read -p 'Done. Any key to continue.'
 
 read -p 'Setup bootloader (systemd-boot) (W. 3.8) [any key to proceed]'
-read -p 'Boot partition? (no /dev/): ' esp
+read -p 'Boot foolder? (e.g. /boot): ' ESP
+read -p 'Root partition? (e.g. sda3, no /dev/): ' ROOT_PARTITION
+read -p 'Installed? (e.g. Linux/Zen): ' KERNEL
 bootctl install &&
-cat loader.conf > $esp/loader/loader.conf
+echo 'default arch.conf' > $ESP/loader/loader.conf
+echo 'timeout 1' >> $ESP/loader/loader.conf
+echo 'console-mode max' >> $ESP/loader/loader.conf
+echo 'editor no' >> $ESP/loader/loader.conf
+echo title Arch $KERNEL > $ESP/loader/entries/arch.conf
+# detect vmlinuz-file
+VMFILE=$(ls /boot | grep vmlinuz)
+echo linux /$VMFILE > $ESP/loader/entries/arch.conf
+echo initrd /intel-ucode.img > $ESP/loader/entries/arch.conf
+echo initrd /$(ls /boot | grep -v fallback - | grep initramfs -) > $ESP/loader/entries/arch.conf
+echo options root=/dev/$ROOT_PARTITION rw > $ESP/loader/entries/arch.conf
+## fallback initramfs
+echo title Arch $KERNEL (fallback) > $ESP/loader/entries/arch-fallback.conf
+echo linux /$VMFILE > $ESP/loader/entries/arch-fallback.conf
+echo initrd /intel-ucode.img > $ESP/loader/entries/arch-fallback.conf
+echo initrd /$(ls /boot | grep fallback -) > $ESP/loader/entries/arch-fallback.conf
+echo options root=/dev/$ROOT_PARTITION rw > $ESP/loader/entries/arch-fallback.conf
