@@ -15,8 +15,12 @@ read -p 'Specify hostname (W. 3.5): ' hostname
 echo $hostname > /etc/hostname &&
 read -p 'Done. Remember to setup network after reboot (the next script will activate NM). Any key to continue.'
 
-read -p 'Define root passwd (W. 3.7) [any key to proceed]'
+read -p 'Define root passwd (W. 3.7) [Enter to proceed]'
 passwd &&
+read -p 'Done. Any key to continue.'
+
+read -p 'Edit pacman conf. [Enter to proceed]'
+rnano /etc/pacman.conf &&
 read -p 'Done. Any key to continue.'
 
 read -p 'Setup bootloader (systemd-boot) (W. 3.8) [any key to proceed]'
