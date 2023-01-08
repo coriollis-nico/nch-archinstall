@@ -15,7 +15,7 @@ read -p 'Done [Enter to continue]'
 echo '--General recommendations:'
 read -p 'New user: ' NEWUSER
 useradd -m $NEWUSER
-passwd coriollis
+passwd $NEWUSER
 chown $NEWUSER -R /home/$NEWUSER
 read -p 'Done [Enter to continue]'
 
