@@ -53,4 +53,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 read -p "[any key to continue]"
 
+cp ~/nch-archinstall /mnt/root
+echo 'Files copied to /mnt/root'
+
 echo 'Now chroot into the new system (W. 3.2) and proceed'
