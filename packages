@@ -13,4 +13,5 @@ texinfo
 git
 intel-ucode
 pkgstats
+reflector
 firewalld
