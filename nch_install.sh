@@ -6,7 +6,6 @@ ls /sys/firmware/efi/efivars &&
 read -p '[Enter to continue]'
 
 echo 'First YOU have to'
-echo 'First YOU have to'
 echo '1) set the console keyboard layout (W. 1.5)'
 echo '3) Connect to the internet (W. 1.7)'
 echo '4) Create (& specify) the partitions (W. 1.9)'
