@@ -48,7 +48,7 @@ echo '(verify before installing)'
 read -p 'Pick a kernel [linux, linux-hardened\lts\rt(rt-lts)\zen]: ' ker
 cat packages | pacstrap -Ki /mnt $ker - &&
 
-print -p "Generate fstab (W. 3.1) [any key to proceed]"
+read -p "Generate fstab (W. 3.1) [any key to proceed]"
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 print -p "[any key to continue]"
