@@ -20,4 +20,6 @@ passwd &&
 read -p 'Done. Any key to continue.'
 
 read -p 'Setup bootloader (systemd-boot) (W. 3.8) [any key to proceed]'
+read -p 'Boot partition? (no /dev/): ' esp
 bootctl install &&
+cat loader.conf > $esp/loader/loader.conf
