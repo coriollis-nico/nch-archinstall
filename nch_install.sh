@@ -52,7 +52,7 @@ cat packages | pacstrap -Ki /mnt $ker -
 print -p "Generate fstab (W. 3.1) [any key to proceed]"
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
-print -p "[any ket to continue]"
+print -p "[any key to continue]"
 
 echo 'Now chroot into the new system (W. 3.2) and proceed'
 # does this work?
