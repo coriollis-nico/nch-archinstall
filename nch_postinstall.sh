@@ -12,8 +12,8 @@ echo LANG=es_MX.UTF-8 > /etc/locale.conf && cat /etc/locale.conf
 echo KEYMAP=la-latin1 > /etc/vconsole.conf && cat /etc/vconsole.conf
 
 read -p 'Specify hostname (W. 3.5): ' hostname
-echo $hostname > /etc/hostname
-read -p 'Done. Remember to setup network after reboot. Any key to continue.'
+echo $hostname > /etc/hostname &&
+read -p 'Done. Remember to setup network after reboot (the next script will activate NM). Any key to continue.'
 
 read -p 'Define root passwd (W. 3.7) [any key to proceed]'
 passwd &&
@@ -24,22 +24,22 @@ read -p 'Boot foolder? (e.g. /boot): ' ESP
 read -p 'Root partition? (e.g. sda3, no /dev/): ' ROOT_PARTITION
 read -p 'Installed? (e.g. Linux/Zen): ' KERNEL
 bootctl install &&
-echo 'default arch.conf' > $ESP/loader/loader.conf
-echo 'timeout 1' >> $ESP/loader/loader.conf
-echo 'console-mode max' >> $ESP/loader/loader.conf
-echo 'editor no' >> $ESP/loader/loader.conf
-echo title Arch $KERNEL > $ESP/loader/entries/arch.conf
+echo 'default arch.conf' > $ESP/loader/loader.conf &&
+echo 'timeout 1' >> $ESP/loader/loader.conf &&
+echo 'console-mode max' >> $ESP/loader/loader.conf &&
+echo 'editor no' >> $ESP/loader/loader.conf &&
+echo title Arch $KERNEL > $ESP/loader/entries/arch.conf &&
 # detect vmlinuz-file
 VMFILE=$(ls /boot | grep vmlinuz)
-echo linux /$VMFILE >> $ESP/loader/entries/arch.conf
-echo initrd /intel-ucode.img >> $ESP/loader/entries/arch.conf
-echo initrd /$(ls /boot | grep -v fallback - | grep initramfs -) >> $ESP/loader/entries/arch.conf
-echo options root=/dev/$ROOT_PARTITION rw >> $ESP/loader/entries/arch.conf
+echo linux /$VMFILE >> $ESP/loader/entries/arch.conf &&
+echo initrd /intel-ucode.img >> $ESP/loader/entries/arch.conf &&
+echo initrd /$(ls /boot | grep -v fallback - | grep initramfs -) >> $ESP/loader/entries/arch.conf &&
+echo options root=/dev/$ROOT_PARTITION rw >> $ESP/loader/entries/arch.conf &&
 ## fallback initramfs
-echo title Arch $KERNEL '(fallback)' > $ESP/loader/entries/arch-fallback.conf
-echo linux /$VMFILE >> $ESP/loader/entries/arch-fallback.conf
-echo initrd /intel-ucode.img >> $ESP/loader/entries/arch-fallback.conf
-echo initrd /$(ls /boot | grep fallback -) >> $ESP/loader/entries/arch-fallback.conf
-echo options root=/dev/$ROOT_PARTITION rw >> $ESP/loader/entries/arch-fallback.conf
+echo title Arch $KERNEL '(fallback)' > $ESP/loader/entries/arch-fallback.conf &&
+echo linux /$VMFILE >> $ESP/loader/entries/arch-fallback.conf &&
+echo initrd /intel-ucode.img >> $ESP/loader/entries/arch-fallback.conf &&
+echo initrd /$(ls /boot | grep fallback -) >> $ESP/loader/entries/arch-fallback.conf &&
+echo options root=/dev/$ROOT_PARTITION rw >> $ESP/loader/entries/arch-fallback.conf &&
 
 echo 'Exit chroot, reboot & test the installation.'
