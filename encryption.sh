@@ -4,14 +4,22 @@ echo '--Make sure user passwd and device passwd is the same'
 read -p '[Enter to start]'
 read -p 'Partition (no /dev/): ' PARTITION
 read -p 'User: ' SETUP_USER
+echo Partition $PARTITION
+echo user $SETUP_USER
 # Setup & test
+echo Creating encryption...
 cryptsetup luksFormat /dev/$PARTITION &&
-cryptsetup open /dev/$PARTITION $NAME &&
+echo Testing opening...
+cryptsetup open /dev/$PARTITION home-$SETUP_USER &&
+echo Making filesystem (ext4)...
 mkfs.ext4 /dev/mapper/home-$SETUP_USER &&
-cryptsetup open device home-$SETUP_USER &&
+echo Mounting...
 mount -t ext4 /dev/mapper/home-$SETUP_USER /mnt/home/$SETUP_USER &&
+lsblk
+echo Unmounting and closing...
 umount /mnt/home/$SETUP_USER &&
 cryptsetup close home-$SETUP_USER &&
+lsblk
 
 # Auto-mounting
 ## pam_cryptsetup
