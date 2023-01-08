@@ -43,7 +43,7 @@ echo -e "\n" >> /etc/systemd/system/home-$SETUP_USER.mount
 echo [Install] >> /etc/systemd/system/home-$SETUP_USER.mount
 echo RequiredBy=user@1000.service >> /etc/systemd/system/home-$SETUP_USER.mount
 ## (activate)
-systemctl enable home-$SETUP_USERNAME.mount
+systemctl enable home-$SETUP_USER.mount
 
 # Lock after unmounting
 echo [Unit] > /etc/systemd/system/cryptsetup-$SETUP_USER.service
