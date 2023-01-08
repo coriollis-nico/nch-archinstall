@@ -25,15 +25,14 @@ lsblk
 ## pam_cryptsetup
 echo '#!/bin/sh' > /etc/pam_cryptsetup.sh
 echo -e "\n" >> /etc/pam_cryptsetup.sh
-echo CRYPT_USER="$SETUP_USERNAME" >> /etc/pam_cryptsetup.sh
+echo CRYPT_USER=\"$SETUP_USER\" >> /etc/pam_cryptsetup.sh
 echo MAPPER="/dev/mapper/home-"$CRYPT_USER >> /etc/pam_cryptsetup.sh
 echo -e "\n" >> /etc/pam_cryptsetup.sh
-echo CRYPT_USER="$SETUP_USERNAME" >> /etc/pam_cryptsetup.sh
 echo 'if [ "$PAM_USER" == "$CRYPT_USER" ] && [ ! -e $MAPPER ]' >> /etc/pam_cryptsetup.sh
-echo then >> /etc/pam_cryptsetup.sh
+echo 'then' >> /etc/pam_cryptsetup.sh
 echo '  /usr/bin/cryptsetup open /dev/sda2 home-$PAM_USER' >> /etc/pam_cryptsetup.sh
-echo then >> /etc/pam_cryptsetup.sh
-echo fi >> /etc/pam_cryptsetup.sh
+echo 'then' >> /etc/pam_cryptsetup.sh
+echo 'fi' >> /etc/pam_cryptsetup.sh
 ## Editing system-auth
 awk '/auth       optional/ { print; print "auth      optional  pam_exec.so expose_authtok quiet /etc/pam_cryptsetup.sh"; next }1' /etc/pam.d/system-auth > /etc/pam.d/system-auth
 awk '/session    optional/ { print; print "session   optional  pam_exec.so quiet /etc/pam_cryptsetup.sh"; next }1' /etc/pam.d/system-auth > /etc/pam.d/system-auth
@@ -43,8 +42,8 @@ echo Requires=user@1000.service >> /etc/systemd/system/home-$SETUP_USER.mount
 echo Before=user@1000.service >> /etc/systemd/system/home-$SETUP_USER.mount
 echo -e "\n" >> /etc/systemd/system/home-$SETUP_USER.mount
 echo [Mount] >> /etc/systemd/system/home-$SETUP_USER.mount
-echo Where=/home/$SETUP_USERNAME >> /etc/systemd/system/home-$SETUP_USER.mount
-echo What=/dev/mapper/home-$SETUP_USERNAME >> /etc/systemd/system/home-$SETUP_USER.mount
+echo Where=/home/$SETUP_USER >> /etc/systemd/system/home-$SETUP_USER.mount
+echo What=/dev/mapper/home-$SETUP_USER >> /etc/systemd/system/home-$SETUP_USER.mount
 echo Type=ext4 >> /etc/systemd/system/home-$SETUP_USER.mount
 echo Options=defaults,relatime >> /etc/systemd/system/home-$SETUP_USER.mount
 echo -e "\n" >> /etc/systemd/system/home-$SETUP_USER.mount
