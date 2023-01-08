@@ -14,10 +14,10 @@ cryptsetup open /dev/$PARTITION home-$SETUP_USER &&
 echo Making filesystem ext4...
 mkfs.ext4 /dev/mapper/home-$SETUP_USER &&
 echo Mounting...
-mount -t ext4 /dev/mapper/home-$SETUP_USER /mnt/home/$SETUP_USER &&
+mount -t ext4 /dev/mapper/home-$SETUP_USER /home/$SETUP_USER &&
 lsblk
 echo Unmounting and closing...
-umount /mnt/home/$SETUP_USER &&
+umount /home/$SETUP_USER &&
 cryptsetup close home-$SETUP_USER &&
 lsblk
 
