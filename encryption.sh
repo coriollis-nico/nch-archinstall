@@ -21,9 +21,9 @@ echo CRYPT_USER="$SETUP_USERNAME" >> /etc/pam_cryptsetup.sh
 echo MAPPER="/dev/mapper/home-"$CRYPT_USER >> /etc/pam_cryptsetup.sh
 echo -e "\n" >> /etc/pam_cryptsetup.sh
 echo CRYPT_USER="$SETUP_USERNAME" >> /etc/pam_cryptsetup.sh
-echo if [ "$PAM_USER" == "$CRYPT_USER" ] && [ ! -e $MAPPER ] >> /etc/pam_cryptsetup.sh
+echo 'if [ "$PAM_USER" == "$CRYPT_USER" ] && [ ! -e $MAPPER ]' >> /etc/pam_cryptsetup.sh
 echo then >> /etc/pam_cryptsetup.sh
-echo "  /usr/bin/cryptsetup open /dev/sda2 home-$PAM_USER" >> /etc/pam_cryptsetup.sh
+echo '  /usr/bin/cryptsetup open /dev/sda2 home-$PAM_USER' >> /etc/pam_cryptsetup.sh
 echo then >> /etc/pam_cryptsetup.sh
 echo fi >> /etc/pam_cryptsetup.sh
 ## Editing system-auth
