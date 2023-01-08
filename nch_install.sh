@@ -51,6 +51,6 @@ cat packages | pacstrap -Ki /mnt $ker - &&
 read -p "Generate fstab (W. 3.1) [any key to proceed]"
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
-print -p "[any key to continue]"
+read -p "[any key to continue]"
 
 echo 'Now chroot into the new system (W. 3.2) and proceed'
