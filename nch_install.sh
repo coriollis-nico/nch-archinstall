@@ -55,3 +55,7 @@ cat /mnt/etc/fstab
 print -p "[any ket to continue]"
 
 echo 'Now chroot into the new system (W. 3.2) and proceed'
+# does this work?
+arch-chroot
+pwd
+ls
