@@ -41,3 +41,5 @@ echo linux /$VMFILE > $ESP/loader/entries/arch-fallback.conf
 echo initrd /intel-ucode.img > $ESP/loader/entries/arch-fallback.conf
 echo initrd /$(ls /boot | grep fallback -) > $ESP/loader/entries/arch-fallback.conf
 echo options root=/dev/$ROOT_PARTITION rw > $ESP/loader/entries/arch-fallback.conf
+
+echo 'Exit chroot, reboot & test install.'
