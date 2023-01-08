@@ -31,15 +31,15 @@ echo 'editor no' >> $ESP/loader/loader.conf
 echo title Arch $KERNEL > $ESP/loader/entries/arch.conf
 # detect vmlinuz-file
 VMFILE=$(ls /boot | grep vmlinuz)
-echo linux /$VMFILE > $ESP/loader/entries/arch.conf
-echo initrd /intel-ucode.img > $ESP/loader/entries/arch.conf
-echo initrd /$(ls /boot | grep -v fallback - | grep initramfs -) > $ESP/loader/entries/arch.conf
-echo options root=/dev/$ROOT_PARTITION rw > $ESP/loader/entries/arch.conf
+echo linux /$VMFILE >> $ESP/loader/entries/arch.conf
+echo initrd /intel-ucode.img >> $ESP/loader/entries/arch.conf
+echo initrd /$(ls /boot | grep -v fallback - | grep initramfs -) >> $ESP/loader/entries/arch.conf
+echo options root=/dev/$ROOT_PARTITION rw >> $ESP/loader/entries/arch.conf
 ## fallback initramfs
 echo title Arch $KERNEL '(fallback)' > $ESP/loader/entries/arch-fallback.conf
-echo linux /$VMFILE > $ESP/loader/entries/arch-fallback.conf
-echo initrd /intel-ucode.img > $ESP/loader/entries/arch-fallback.conf
-echo initrd /$(ls /boot | grep fallback -) > $ESP/loader/entries/arch-fallback.conf
-echo options root=/dev/$ROOT_PARTITION rw > $ESP/loader/entries/arch-fallback.conf
+echo linux /$VMFILE >> $ESP/loader/entries/arch-fallback.conf
+echo initrd /intel-ucode.img >> $ESP/loader/entries/arch-fallback.conf
+echo initrd /$(ls /boot | grep fallback -) >> $ESP/loader/entries/arch-fallback.conf
+echo options root=/dev/$ROOT_PARTITION rw >> $ESP/loader/entries/arch-fallback.conf
 
-echo 'Exit chroot, reboot & test install.'
+echo 'Exit chroot, reboot & test the installation.'
