@@ -11,6 +11,7 @@ nano
 man-db
 man-pages
 texinfo
+python
 git
 intel-ucode
 pkgstats
