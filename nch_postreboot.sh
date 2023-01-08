@@ -19,6 +19,10 @@ passwd $NEWUSER &&
 chown $NEWUSER -R /home/$NEWUSER &&
 read -p 'Done [Enter to continue]'
 
+read -p '[Enter to config. sudo]'
+EDITOR=nano visudo
+read -p 'Done [Enter to continue]'
+
 echo '[Enter to activate firewalld]'
 read -p '(You will have to configure it afterwards)'
 systemctl enable firewalld.service &&
