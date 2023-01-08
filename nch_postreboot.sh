@@ -39,5 +39,5 @@ rnano /etc/default/cpupower
 systemctl enable cpupower.service
 read -p 'Done (check the CPU frec. scaling wiki for specific configs. for DEs) [Enter to continue]'
 
-echo 'You now can run the encryption script'
-echo 'Also consider USBGuard and FIX LATER'
+echo 'You now can run the encryption script and/or DE install script'
+echo 'Also consider USBGuard and modprobed-db'
