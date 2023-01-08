@@ -20,7 +20,7 @@ chown $NEWUSER -R /home/$NEWUSER
 read -p 'Done [Enter to continue]'
 
 echo '[Enter to activate firewalld]'
-echo '(You will have to configure it afterwards)'
+read -p '(You will have to configure it afterwards)'
 systemctl enable firewalld.service
 systemctl start firewalld.service
 read -p 'Done [Enter to continue]'
