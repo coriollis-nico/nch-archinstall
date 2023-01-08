@@ -46,7 +46,7 @@ read -p "[any key to continue]"
 echo 'Now installing essential packages (W. 2.2)'
 echo '(verify before installing)'
 read -p 'Pick a kernel [linux, linux-hardened\lts\rt(rt-lts)\zen]' ker
-pacstrap -Ki /mnt base base-devel $ker linux-firmware dosfstools {exfat,e2fs}progs ntfs-3g networkmanager nano man-{db,pages} texinfo
+cat packages | pacstrap -Ki /mnt $ker -
 &&
 
 print -p "Generate fstab (W. 3.1) [any key to proceed]"

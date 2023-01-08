@@ -1,0 +1,13 @@
+base
+base-devel
+linux-firmware
+dosfstools
+exfatprogs
+e2fsprogs
+ntfs-3g
+networkmanager
+nano
+man-db
+man-pages
+texinfo
+intel-ucode
