@@ -20,3 +20,4 @@ firewalld
 thermald
 glances
 cpupower
+openssh
