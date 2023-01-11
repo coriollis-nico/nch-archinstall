@@ -12,6 +12,7 @@ man-db
 man-pages
 texinfo
 python
+gcc-fortran
 git
 intel-ucode
 pkgstats
