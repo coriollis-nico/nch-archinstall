@@ -5,6 +5,7 @@ linux-firmware
 dosfstools
 exfatprogs
 e2fsprogs
+btrfs-progs
 ntfs-3g
 networkmanager
 nano
@@ -19,6 +20,6 @@ pkgstats
 reflector
 firewalld
 thermald
-glances
+htop
 cpupower
 openssh
